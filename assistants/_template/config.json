@@ -1,0 +1,23 @@
+{
+  "_instructions": "Copy to assistants/<name>/config.json. Remove _instructions fields. Create via VAPI API then update config.json with the returned ID.",
+  "name": "VOICE_NAME - RKT EVENT_NAME Reminder",
+  "voice": {
+    "_note": "Active Indian American voices: Sagar (steady/professional), Rohan (bright/energetic), Neil (clear/professional)",
+    "voiceId": "Sagar",
+    "provider": "vapi"
+  },
+  "firstMessage": "Opening line when call is answered. Keep under 30 words. Start with Radhey Radhey or Namaste.",
+  "voicemailMessage": "Message if no answer. 20-30 seconds when spoken aloud. Include event dates and website.",
+  "endCallMessage": "Thank you so much for your time! We hope to see you at the celebration. Have a blessed day — Radhey Radhey!",
+  "model": {
+    "model": "gpt-4o-mini",
+    "provider": "openai",
+    "temperature": 0.7,
+    "messages": [{"role": "system", "content": "REPLACE_WITH_SYSTEM_PROMPT"}]
+  },
+  "transcriber": {"model": "nova-3", "language": "en", "provider": "deepgram"},
+  "silenceTimeoutSeconds": 30,
+  "endCallPhrases": ["goodbye", "bye", "no thank you", "not interested", "please remove me"],
+  "maxDurationSeconds": 300,
+  "backgroundSound": "off"
+}

@@ -1,0 +1,36 @@
+{
+  "_comment": "Copy this file to campaigns/<your-campaign-id>/campaign.json and fill in real values.",
+  "id": "YYYY-MM-campaign-name",
+  "name": "CAMPAIGN DISPLAY NAME",
+  "description": "What this campaign is for and who it serves",
+  "status": "DRAFT",
+  "_status_options": ["DRAFT", "READY", "ACTIVE", "PAUSED", "COMPLETE"],
+  "assistant_id": "VAPI_ASSISTANT_ID",
+  "phone_number_id": "VAPI_PHONE_NUMBER_ID",
+  "phone_number": "+1XXXXXXXXXX",
+  "calling_window": {
+    "_comment": "Calls will only be placed within this window",
+    "timezone": "America/Chicago",
+    "days": ["Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "start_time": "11:00",
+    "end_time": "19:00"
+  },
+  "retry_policy": {
+    "max_attempts": 2,
+    "retry_after_hours": 24,
+    "retry_on": ["no-answer", "busy"]
+  },
+  "personalization": {
+    "use_name": true,
+    "first_message_template": "Radhey Radhey! Is this {{name}}? This is [AGENT NAME] calling from Radha Krishna Temple of Dallas — I hope I am catching you at a good time!"
+  },
+  "created_at": "YYYY-MM-DD",
+  "created_by": "YOUR_NAME",
+  "events": [
+    {
+      "_comment": "List all events this campaign is promoting",
+      "name": "EVENT NAME",
+      "dates": ["YYYY-MM-DD"]
+    }
+  ]
+}

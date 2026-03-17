@@ -1,0 +1,31 @@
+{
+  "id": "2026-03-navratri",
+  "name": "Chaitra Navratri + Ram Navami 2026",
+  "description": "Outreach campaign for Ugadi/Gudi Padwa, Chaitra Navratri (Mar 19-29), and Ram Navami (Mar 26-29) at RKT Dallas",
+  "status": "READY",
+  "assistant_id": "11325470-888c-48dd-a76e-eaeb5522bb7d",
+  "phone_number_id": "9bbf1477-f0ca-4903-89bd-1101df90d511",
+  "phone_number": "+14697951551",
+  "calling_window": {
+    "timezone": "America/Chicago",
+    "days": ["Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "start_time": "11:00",
+    "end_time": "19:00"
+  },
+  "retry_policy": {
+    "max_attempts": 2,
+    "retry_after_hours": 24,
+    "retry_on": ["no-answer", "busy"]
+  },
+  "personalization": {
+    "use_name": true,
+    "first_message_template": "Radhey Radhey! Is this {{name}}? This is Arjun calling from Radha Krishna Temple of Dallas — I hope I am catching you at a good time!"
+  },
+  "created_at": "2026-03-17",
+  "created_by": "Brahma",
+  "events": [
+    {"name": "Ugadi & Gudi Padwa", "dates": ["2026-03-19","2026-03-21"]},
+    {"name": "Chaitra Navratri", "start": "2026-03-19", "end": "2026-03-29"},
+    {"name": "Ram Navami", "start": "2026-03-26", "end": "2026-03-29"}
+  ]
+}
