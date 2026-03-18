@@ -1,5 +1,7 @@
 'use strict';
 
+const ensureCampaignExists = require('../lib/ensure-campaign');
+
 /**
  * Handle VAPI status-update events.
  * 
@@ -23,6 +25,9 @@ async function statusUpdateHandler(message, supabase) {
       console.warn('[status-update] Supabase not available — skipping DB write');
       return;
     }
+
+    // Ensure campaign exists (auto-creates stub if missing — never throws)
+    await ensureCampaignExists(campaignId, supabase);
 
     // Upsert into voice_call_log — create row if new, update status if exists
     const { error } = await supabase

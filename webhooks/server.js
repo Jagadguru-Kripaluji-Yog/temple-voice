@@ -95,8 +95,21 @@ app.post('/webhook/vapi', validateVapiSecret, async (req, res) => {
 
   const message = req.body?.message || req.body;
   const messageType = message?.type;
+  const callId = message?.call?.id || message?.callId || null;
+  const campaignId = message?.call?.metadata?.campaignId || null;
 
   console.log(`[VAPI] message.type = ${messageType}`);
+
+  // BLACK BOX — write raw payload FIRST, before any other logic.
+  // No FK constraints. Even if downstream processing crashes, the event is safe.
+  supabase.from('voice_webhook_raw').insert({
+    vapi_call_id: callId,
+    message_type: messageType,
+    campaign_id: campaignId,
+    payload: message
+  }).then(({ error }) => {
+    if (error) console.error('[raw-log] Write failed:', error.message);
+  });
 
   try {
     switch (messageType) {

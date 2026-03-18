@@ -1,5 +1,6 @@
 'use strict';
 
+const ensureCampaignExists = require('../lib/ensure-campaign');
 const fs = require('fs');
 const path = require('path');
 
@@ -89,6 +90,9 @@ async function endOfCallHandler(message, supabase) {
         console.error('[end-of-call] Failed to write calls.jsonl:', fsErr.message);
       }
     }
+
+    // 2a. Ensure campaign exists (auto-creates stub if missing — never throws)
+    await ensureCampaignExists(campaignId, supabase);
 
     // 2. UPSERT to Supabase voice_call_log
     // IMPORTANT: must be UPSERT not INSERT — status-update handler creates the row first
