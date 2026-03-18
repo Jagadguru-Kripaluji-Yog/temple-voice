@@ -31,6 +31,7 @@ async function ensureCampaignExists(campaignId, supabase) {
             id: campaignId,
             name: `[Auto-created] ${campaignId}`,
             status: 'auto-created',
+            event_type: 'general',
             notes: `Auto-created by webhook at ${new Date().toISOString()}. Please update name and details.`
           },
           { onConflict: 'id', ignoreDuplicates: true }
