@@ -41,7 +41,11 @@ async function endOfCallHandler(message, supabase) {
 
     const callId = call.id || message.callId;
     const campaignId = call.metadata?.campaignId || null;
-    const contactPhone = call.customer?.number || null;
+    const contactPhone =
+      call.customer?.number ||
+      message.customer?.number ||
+      call.from ||       // inbound caller number
+      null;
     const endedReason = message.endedReason || call.endedReason || 'unknown';
 
     // Duration calculation

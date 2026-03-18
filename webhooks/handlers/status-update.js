@@ -17,7 +17,11 @@ async function statusUpdateHandler(message, supabase) {
     const callId = call.id || message.callId;
     const status = message.status || call.status;
     const campaignId = call.metadata?.campaignId || null;
-    const contactPhone = call.customer?.number || null;
+    const contactPhone =
+      call.customer?.number ||
+      message.customer?.number ||
+      call.from ||       // inbound caller number
+      null;
 
     console.log(`[status-update] callId=${callId} status=${status} campaign=${campaignId}`);
 
